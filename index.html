@@ -41,6 +41,76 @@
             margin-bottom: 28px;
         }
 
+        /* Consolidated identity + contact block */
+        .id-block {
+            background: var(--soft);
+            border: 1px solid var(--line);
+            border-radius: 16px;
+            padding: 32px 32px 28px;
+            margin: 8px 0 48px;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 22px;
+        }
+        .id-block .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 16px;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--ink);
+            font-weight: 700;
+        }
+        .id-block .logo-mark {
+            width: 28px; height: 28px;
+            border-radius: 8px;
+            background: linear-gradient(135deg, var(--azure) 0%, #5a9be0 100%);
+            box-shadow: 0 2px 6px rgba(42,111,184,0.25);
+        }
+        .id-block .divider {
+            height: 1px;
+            background: var(--line);
+        }
+        .id-row {
+            display: grid;
+            grid-template-columns: 110px 1fr;
+            gap: 18px;
+            align-items: baseline;
+        }
+        @media (max-width: 520px) {
+            .id-row { grid-template-columns: 1fr; gap: 6px; }
+        }
+        .id-row .label {
+            font-size: 12px;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--mute);
+        }
+        .id-row .phone {
+            font-size: clamp(28px, 4vw, 38px);
+            font-weight: 700;
+            color: var(--azure);
+            text-decoration: none;
+            font-variant-numeric: tabular-nums;
+            line-height: 1.1;
+        }
+        .id-row .phone:hover { text-decoration: underline; }
+        .id-row .hours {
+            margin-top: 6px;
+            font-size: 15px;
+            color: var(--ink);
+        }
+        .id-row .hours .tz { color: var(--mute); font-size: 13px; }
+        .id-row .email {
+            font-size: clamp(17px, 2vw, 19px);
+            color: var(--azure);
+            text-decoration: none;
+            font-weight: 500;
+            word-break: break-all;
+        }
+        .id-row .email:hover { text-decoration: underline; }
+
         h1 {
             font-size: clamp(32px, 5vw, 48px);
             line-height: 1.15;
@@ -77,6 +147,14 @@
             color: var(--mute);
             margin-bottom: 8px;
         }
+        .memory-test .preamble {
+            display: block;
+            font-size: 14px;
+            color: var(--mute);
+            margin-bottom: 14px;
+            font-style: italic;
+        }
+        .memory-test .preamble .arrow { color: var(--azure); font-style: normal; padding: 0 4px; }
         .memory-test h2 {
             font-size: clamp(22px, 3vw, 26px);
             margin: 0 0 6px;
@@ -236,8 +314,6 @@
 </head>
 <body>
     <main>
-        <div class="brand">Azure Flowstate</div>
-
         <h1>AI-refined job descriptions.<br>Candidates delivered to your WhatsApp.</h1>
         <p class="tagline">
             We refine your job description, sourcing and pre-qualifying candidates with autonomous agents.
@@ -246,6 +322,7 @@
         </p>
 
         <section class="memory-test" aria-labelledby="memory-q">
+            <span class="preamble">In case you missed it <span class="arrow">→</span> thanks for the food.</span>
             <div class="eyebrow">You don't remember?</div>
             <h2 id="memory-q">Why did you land here?</h2>
             <p class="memory-sub">Pick whichever rings a bell — we'll point you the right way.</p>
@@ -266,21 +343,29 @@
             <div class="memory-response" id="memory-response" role="status" aria-live="polite" hidden></div>
         </section>
 
-        <div class="contact-card" id="support">
-            <div class="contact-label">Talk to us</div>
-            <a class="phone" href="tel:+6500000000">+65&nbsp;XXXX&nbsp;XXXX</a>
-            <div class="hours">
-                <div class="hours-line">
-                    <strong>Mondays &amp; Thursdays</strong>
-                    <span>9:30 AM – 12:00 PM</span>
-                    <span class="tz">(Singapore Time)</span>
+        <section class="id-block" id="support" aria-label="Azure Flowstate contact">
+            <div class="logo">
+                <span class="logo-mark" aria-hidden="true"></span>
+                Azure Flowstate
+            </div>
+            <div class="divider"></div>
+            <div class="id-row">
+                <div class="label">Call</div>
+                <div>
+                    <a class="phone" href="tel:+6500000000">+65&nbsp;XXXX&nbsp;XXXX</a>
+                    <div class="hours">
+                        <strong>Mondays &amp; Thursdays</strong> · 9:30 AM – 12:00 PM
+                        <span class="tz">(Singapore Time)</span>
+                    </div>
                 </div>
             </div>
-        </div>
-
-        <p class="secondary">
-            Written enquiries: <a href="mailto:privacy@azure.msg.community">privacy@azure.msg.community</a>
-        </p>
+            <div class="id-row">
+                <div class="label">Email</div>
+                <div>
+                    <a class="email" href="mailto:privacy@azure.msg.community">privacy@azure.msg.community</a>
+                </div>
+            </div>
+        </section>
     </main>
 
     <footer>
