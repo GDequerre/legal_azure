@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Azure Flowstate</title>
-    <meta name="description" content="Azure Flowstate Private Limited — Singapore. Verification assistance over WhatsApp.">
+    <meta name="description" content="Azure Flowstate Private Limited — AI-driven recruitment. Job descriptions refined, candidates delivered to your WhatsApp.">
     <style>
         :root {
             --ink: #0e1a2b;
@@ -61,6 +61,83 @@
             text-decoration: none;
         }
         .tagline a:hover { text-decoration: underline; }
+
+        /* Memory-test funnel */
+        .memory-test {
+            background: linear-gradient(180deg, #fdfdfb 0%, #f4f7fb 100%);
+            border: 1px solid var(--line);
+            border-radius: 16px;
+            padding: 32px 32px 28px;
+            margin: 8px 0 40px;
+        }
+        .memory-test .eyebrow {
+            font-size: 12px;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--mute);
+            margin-bottom: 8px;
+        }
+        .memory-test h2 {
+            font-size: clamp(22px, 3vw, 26px);
+            margin: 0 0 6px;
+            color: var(--ink);
+            line-height: 1.2;
+        }
+        .memory-test .memory-sub {
+            margin: 0 0 20px;
+            color: var(--mute);
+            font-size: 15px;
+        }
+        .memory-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 10px;
+        }
+        .memory-options button {
+            font: inherit;
+            text-align: left;
+            background: #fff;
+            border: 1px solid var(--line);
+            border-radius: 10px;
+            padding: 14px 16px;
+            cursor: pointer;
+            color: var(--ink);
+            line-height: 1.35;
+            transition: border-color 120ms ease, background 120ms ease, transform 120ms ease;
+        }
+        .memory-options button:hover {
+            border-color: var(--azure);
+            background: #f0f6fc;
+        }
+        .memory-options button[aria-pressed="true"] {
+            border-color: var(--azure);
+            background: #e8f1fa;
+            box-shadow: inset 0 0 0 1px var(--azure);
+        }
+        .memory-response {
+            margin-top: 18px;
+            padding: 16px 18px;
+            background: #fff;
+            border: 1px solid var(--line);
+            border-left: 3px solid var(--azure);
+            border-radius: 8px;
+            font-size: 15px;
+            color: var(--ink);
+        }
+        .memory-response[hidden] { display: none; }
+        .memory-response p { margin: 0 0 10px; }
+        .memory-response p:last-child { margin-bottom: 0; }
+        .memory-response a.route-cta {
+            display: inline-block;
+            background: var(--azure);
+            color: #fff;
+            padding: 9px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+        }
+        .memory-response a.route-cta:hover { background: #1e5a99; }
 
         .contact-card {
             background: var(--soft);
@@ -168,7 +245,28 @@
             <a href="https://hirry.co">hirry.co</a>.
         </p>
 
-        <div class="contact-card">
+        <section class="memory-test" aria-labelledby="memory-q">
+            <div class="eyebrow">You don't remember?</div>
+            <h2 id="memory-q">Why did you land here?</h2>
+            <p class="memory-sub">Pick whichever rings a bell — we'll point you the right way.</p>
+            <div class="memory-options" role="radiogroup" aria-labelledby="memory-q">
+                <button type="button" role="radio" aria-pressed="false" data-route="hire">
+                    I want to hire someone.
+                </button>
+                <button type="button" role="radio" aria-pressed="false" data-route="contacted">
+                    Someone from us contacted me.
+                </button>
+                <button type="button" role="radio" aria-pressed="false" data-route="data">
+                    I want my data removed.
+                </button>
+                <button type="button" role="radio" aria-pressed="false" data-route="other">
+                    Something else, or I'm just looking.
+                </button>
+            </div>
+            <div class="memory-response" id="memory-response" role="status" aria-live="polite" hidden></div>
+        </section>
+
+        <div class="contact-card" id="support">
             <div class="contact-label">Talk to us</div>
             <a class="phone" href="tel:+6500000000">+65&nbsp;XXXX&nbsp;XXXX</a>
             <div class="hours">
@@ -198,5 +296,44 @@
             </nav>
         </div>
     </footer>
+
+    <script>
+        (function () {
+            const routes = {
+                hire: {
+                    body: "You want candidates in your WhatsApp. Hirry is the product. Open it, pick your role, save a card — we start sourcing within 72 hours.",
+                    cta: { label: "Open hirry.co", href: "https://hirry.co" }
+                },
+                contacted: {
+                    body: "If one of our agents called or messaged you, the easiest thing is to reply on the WhatsApp thread you already have with us. Or call the support line below during open hours.",
+                    cta: { label: "Jump to support hours", href: "#support" }
+                },
+                data: {
+                    body: "We delete on request, usually within 30 days. The Data Deletion page has the email and a 4-step procedure.",
+                    cta: { label: "Go to Data Deletion", href: "data-deletion.html" }
+                },
+                other: {
+                    body: "Press, partners, suppliers, or just curious — written enquiries are answered by email. For anything privacy-related, see the Privacy Policy.",
+                    cta: { label: "Email us", href: "mailto:privacy@azure.msg.community" }
+                }
+            };
+
+            const buttons = document.querySelectorAll('.memory-options button');
+            const response = document.getElementById('memory-response');
+
+            buttons.forEach(function (btn) {
+                btn.addEventListener('click', function () {
+                    buttons.forEach(function (b) { b.setAttribute('aria-pressed', 'false'); });
+                    btn.setAttribute('aria-pressed', 'true');
+                    const route = routes[btn.dataset.route];
+                    if (!route) return;
+                    response.innerHTML =
+                        '<p>' + route.body + '</p>' +
+                        '<p><a class="route-cta" href="' + route.cta.href + '">' + route.cta.label + '</a></p>';
+                    response.hidden = false;
+                });
+            });
+        })();
+    </script>
 </body>
 </html>
