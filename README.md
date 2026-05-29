@@ -10,7 +10,7 @@ Served at <https://azure.msg.community>.
 - [`terms.html`](terms.html) — Terms of Use for the WhatsApp Verification Assistance service.
 - [`privacy.html`](privacy.html) — Privacy Policy (PDPA).
 - [`data-deletion.html`](data-deletion.html) — Data deletion procedure.
-- [`terms_hirry.md`](terms_hirry.md) — Terms of Service for the Hirry candidate-delivery product.
+- [`terms_hirry.html`](terms_hirry.html) — Terms of Service for the Hirry candidate-delivery product.
 
 ## Hosting
 
