@@ -5,6 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Data Deletion | Azure Flowstate</title>
     <style>
+        :root {
+            --ink: #0e1a2b;
+            --azure: #2a6fb8;
+            --azure-dark: #1e5a99;
+            --mute: #5a6776;
+            --soft: #f4f7fb;
+            --line: #e3e8ef;
+            --accent: #e8f4fd;
+        }
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
             line-height: 1.6;
@@ -13,14 +22,114 @@
             padding: 40px 20px;
             color: #333;
         }
-        h1 { color: #1a1a1a; border-bottom: 2px solid #2a6fb8; padding-bottom: 10px; }
-        h2 { color: #2a6fb8; margin-top: 30px; }
-        .update-date { color: #666; font-style: italic; }
-        .contact-box { background: #f5f5f5; padding: 20px; border-radius: 8px; margin-top: 30px; }
-        .steps { background: #e8f4fd; padding: 20px; border-radius: 8px; margin: 20px 0; }
-        .steps ol { margin: 0; padding-left: 20px; }
-        .steps li { margin-bottom: 10px; }
+        h1 { color: var(--ink); border-bottom: 2px solid var(--azure); padding-bottom: 10px; }
+        h2 { color: var(--azure); margin-top: 36px; }
+        .update-date { color: var(--mute); font-style: italic; }
+        .contact-box { background: var(--soft); padding: 20px; border-radius: 8px; margin-top: 30px; }
         .warning { background: #fff3cd; padding: 15px; border-left: 4px solid #ffc107; margin: 20px 0; }
+
+        /* Prominent request section — designed to occupy 40%+ of the visible page */
+        .request-hero {
+            background: linear-gradient(180deg, #e8f4fd 0%, #d6ebfa 100%);
+            border: 2px solid var(--azure);
+            border-radius: 16px;
+            padding: 48px 40px;
+            margin: 36px 0 48px;
+            box-shadow: 0 6px 24px rgba(42, 111, 184, 0.12);
+        }
+        .request-hero .eyebrow {
+            text-transform: uppercase;
+            letter-spacing: 0.16em;
+            font-size: 13px;
+            color: var(--azure-dark);
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        .request-hero h2 {
+            color: var(--ink);
+            font-size: clamp(26px, 4vw, 34px);
+            margin: 0 0 16px;
+            border: 0;
+            padding: 0;
+            line-height: 1.2;
+        }
+        .request-hero .lead {
+            font-size: 17px;
+            color: var(--ink);
+            margin: 0 0 28px;
+        }
+        .request-hero .email-cta {
+            display: inline-block;
+            background: var(--azure);
+            color: #fff;
+            padding: 18px 28px;
+            border-radius: 10px;
+            font-size: clamp(18px, 2.4vw, 22px);
+            font-weight: 700;
+            text-decoration: none;
+            letter-spacing: 0.01em;
+            box-shadow: 0 4px 12px rgba(42, 111, 184, 0.25);
+        }
+        .request-hero .email-cta:hover { background: var(--azure-dark); }
+        .request-hero .subject-line {
+            display: block;
+            margin-top: 14px;
+            color: var(--mute);
+            font-size: 14px;
+        }
+        .request-hero .subject-line code {
+            background: #fff;
+            border: 1px solid var(--line);
+            padding: 2px 8px;
+            border-radius: 4px;
+            color: var(--ink);
+        }
+
+        .steps {
+            margin-top: 32px;
+            background: #fff;
+            border: 1px solid var(--line);
+            border-radius: 12px;
+            padding: 28px 32px;
+        }
+        .steps h3 {
+            margin: 0 0 18px;
+            font-size: 18px;
+            color: var(--ink);
+            letter-spacing: 0.02em;
+        }
+        .steps ol {
+            margin: 0;
+            padding-left: 24px;
+            counter-reset: step;
+            list-style: none;
+        }
+        .steps ol li {
+            position: relative;
+            padding-left: 16px;
+            margin-bottom: 18px;
+            font-size: 16px;
+            line-height: 1.55;
+        }
+        .steps ol li:last-child { margin-bottom: 0; }
+        .steps ol li::before {
+            counter-increment: step;
+            content: counter(step);
+            position: absolute;
+            left: -24px;
+            top: 0;
+            width: 28px;
+            height: 28px;
+            background: var(--azure);
+            color: #fff;
+            border-radius: 50%;
+            font-weight: 700;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .steps ol li strong { color: var(--ink); }
     </style>
 </head>
 <body>
@@ -31,32 +140,41 @@
         Under the Singapore Personal Data Protection Act 2012 (PDPA), and where applicable the EU General Data Protection Regulation (GDPR), you have the right to request the deletion of personal data we hold about you, collected through our AI-driven recruitment services (azure.msg.community, hirry.co, and WhatsApp Business).
     </p>
 
+    <section class="request-hero" aria-labelledby="request-heading">
+        <div class="eyebrow">Submit a deletion request</div>
+        <h2 id="request-heading">Send one email. We do the rest.</h2>
+        <p class="lead">
+            We process every verified request within <strong>30 days</strong> and confirm completion by email.
+        </p>
+        <a class="email-cta" href="mailto:privacy@azure.msg.community?subject=Data%20Deletion%20Request">privacy@azure.msg.community</a>
+        <span class="subject-line">
+            Suggested subject: <code>Data Deletion Request</code>
+        </span>
+
+        <div class="steps">
+            <h3>What to include and what happens next</h3>
+            <ol>
+                <li>
+                    <strong>Identify yourself</strong> — include the phone number, WhatsApp number, or email associated with your interaction with us. For Customer accounts, include the company name and the account holder's name.
+                </li>
+                <li>
+                    <strong>We verify</strong> — we may ask you to confirm your identity before processing your request.
+                </li>
+                <li>
+                    <strong>We process</strong> — your request is handled within a maximum of 30 days from verification.
+                </li>
+                <li>
+                    <strong>We confirm</strong> — once completed, we email a confirmation to the address you provide.
+                </li>
+            </ol>
+        </div>
+    </section>
+
     <h2>Who can request deletion</h2>
     <ul>
         <li><strong>Candidates</strong> — individuals contacted by our agents or who interacted with our platform.</li>
         <li><strong>Customers and their representatives</strong> — employer accounts (subject to legal record-keeping obligations, see exceptions below).</li>
     </ul>
-
-    <h2>How to request deletion of your data</h2>
-
-    <div class="steps">
-        <ol>
-            <li>
-                <strong>By email</strong>: send your request to
-                <a href="mailto:formalcomplaints@azure.msg.community">formalcomplaints@azure.msg.community</a>
-                with the subject line "Data Deletion Request".
-            </li>
-            <li>
-                <strong>Information to provide</strong>: include the phone number, WhatsApp number, or email address associated with your interaction with us. For Customer accounts, include the company name and account holder's name.
-            </li>
-            <li>
-                <strong>Verification</strong>: we may ask you to confirm your identity before processing your request.
-            </li>
-            <li>
-                <strong>Processing time</strong>: your request will be processed within a maximum of 30 days.
-            </li>
-        </ol>
-    </div>
 
     <h2>Data covered</h2>
     <p>Deletion will cover:</p>
@@ -88,18 +206,13 @@
         <li><strong>Customer account data</strong>: kept while the account is active; 6 years after termination for accounting and dispute purposes.</li>
     </ul>
 
-    <h2>Confirmation</h2>
-    <p>
-        Once your request has been processed, we will send a confirmation to the email address you provide.
-    </p>
-
     <div class="contact-box">
-        <h3>Contact for deletion requests</h3>
+        <h3>Address on record</h3>
         <p>
             <strong>AZURE FLOWSTATE PRIVATE LIMITED</strong><br>
             68 Circular Road, #02-01, Singapore 049422<br>
             UEN: 202615248W<br>
-            Email: <a href="mailto:formalcomplaints@azure.msg.community">formalcomplaints@azure.msg.community</a>
+            Email: <a href="mailto:privacy@azure.msg.community">privacy@azure.msg.community</a>
         </p>
         <p>
             For any question relating to your rights, please see our <a href="privacy.html">Privacy Policy</a>.
