@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Affiliate Program | Azure Flowstate</title>
+    <meta name="description" content="Earn 30% commission promoting the Hirry service and Hirry AI by Azure Flowstate Private Limited.">
+    <style>
+        :root {
+            --ink: #0e1a2b;
+            --azure: #2a6fb8;
+            --azure-dark: #1e5a99;
+            --azure-soft: #e8f1fa;
+            --mute: #5a6776;
+            --soft: #f4f7fb;
+            --line: #e3e8ef;
+            --accent: #f7d05b;
+        }
+        * { box-sizing: border-box; }
+        html, body { margin: 0; padding: 0; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            color: var(--ink);
+            background: #fff;
+            line-height: 1.55;
+        }
+        main { max-width: 960px; margin: 0 auto; padding: 60px 24px 40px; }
+
+        .brand-strip {
+            font-size: 13px;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--mute);
+            margin-bottom: 24px;
+        }
+        .brand-strip a { color: var(--mute); text-decoration: none; }
+        .brand-strip a:hover { color: var(--azure); }
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(180deg, #f4f7fb 0%, #e8f1fa 100%);
+            border: 1px solid var(--line);
+            border-radius: 20px;
+            padding: 56px 48px;
+            margin-bottom: 56px;
+            display: grid;
+            grid-template-columns: 1.4fr 1fr;
+            gap: 32px;
+            align-items: center;
+        }
+        @media (max-width: 720px) { .hero { grid-template-columns: 1fr; padding: 40px 28px; } }
+        .hero .eyebrow {
+            font-size: 13px;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--azure-dark);
+            font-weight: 600;
+            margin-bottom: 14px;
+        }
+        .hero h1 {
+            font-size: clamp(34px, 5vw, 52px);
+            line-height: 1.1;
+            margin: 0 0 16px;
+            font-weight: 800;
+            letter-spacing: -0.015em;
+            color: var(--ink);
+        }
+        .hero h1 em {
+            color: var(--azure);
+            font-style: normal;
+        }
+        .hero p {
+            font-size: 17px;
+            color: var(--mute);
+            margin: 0 0 28px;
+        }
+        .cta-primary {
+            display: inline-block;
+            background: var(--ink);
+            color: #fff;
+            padding: 14px 26px;
+            border-radius: 10px;
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 16px;
+            box-shadow: 0 4px 14px rgba(14,26,43,0.18);
+        }
+        .cta-primary:hover { background: #1a2942; }
+        .cta-secondary {
+            margin-left: 12px;
+            color: var(--ink);
+            font-size: 14px;
+            text-decoration: none;
+            border-bottom: 1px solid var(--ink);
+        }
+        .cta-secondary:hover { color: var(--azure); border-color: var(--azure); }
+        .hero-figure {
+            background: #fff;
+            border-radius: 16px;
+            padding: 32px 28px;
+            text-align: center;
+            border: 1px solid var(--line);
+            box-shadow: 0 6px 24px rgba(42,111,184,0.08);
+        }
+        .hero-figure .pct {
+            font-size: clamp(60px, 9vw, 96px);
+            font-weight: 800;
+            color: var(--azure);
+            line-height: 1;
+            letter-spacing: -0.02em;
+        }
+        .hero-figure .pct-label {
+            color: var(--mute);
+            font-size: 14px;
+            margin-top: 8px;
+            letter-spacing: 0.04em;
+        }
+        .hero-figure .pct-note {
+            margin-top: 18px;
+            padding-top: 16px;
+            border-top: 1px dashed var(--line);
+            font-size: 13px;
+            color: var(--mute);
+        }
+
+        h2 {
+            font-size: clamp(24px, 3vw, 32px);
+            margin: 0 0 8px;
+            color: var(--ink);
+            font-weight: 700;
+            letter-spacing: -0.01em;
+        }
+        .section-sub {
+            font-size: 16px;
+            color: var(--mute);
+            margin: 0 0 32px;
+            max-width: 60ch;
+        }
+        section.block { margin-bottom: 64px; }
+
+        /* Steps */
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 16px;
+        }
+        .step {
+            background: #fff;
+            border: 1px solid var(--line);
+            border-radius: 14px;
+            padding: 24px;
+        }
+        .step .step-num {
+            display: inline-flex;
+            align-items: center; justify-content: center;
+            width: 32px; height: 32px;
+            border-radius: 50%;
+            background: var(--azure-soft);
+            color: var(--azure-dark);
+            font-weight: 700;
+            font-size: 15px;
+            margin-bottom: 14px;
+        }
+        .step h3 {
+            font-size: 17px;
+            margin: 0 0 8px;
+            color: var(--ink);
+        }
+        .step p {
+            font-size: 14px;
+            color: var(--mute);
+            margin: 0;
+        }
+
+        /* Earnings table */
+        .earnings {
+            background: var(--soft);
+            border: 1px solid var(--line);
+            border-radius: 16px;
+            padding: 28px;
+            overflow-x: auto;
+        }
+        table.earn {
+            width: 100%;
+            border-collapse: collapse;
+            font-variant-numeric: tabular-nums;
+            min-width: 480px;
+        }
+        table.earn th, table.earn td {
+            padding: 12px 14px;
+            text-align: right;
+            border-bottom: 1px solid var(--line);
+        }
+        table.earn th:first-child, table.earn td:first-child { text-align: left; }
+        table.earn thead th {
+            font-weight: 600;
+            font-size: 13px;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            color: var(--mute);
+        }
+        table.earn tbody td.currency { font-weight: 600; color: var(--ink); }
+        table.earn tbody tr:hover { background: #fff; }
+        .earnings-note {
+            margin-top: 16px;
+            font-size: 13px;
+            color: var(--mute);
+        }
+
+        /* Two-col features */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 16px;
+        }
+        .feature {
+            background: #fff;
+            border: 1px solid var(--line);
+            border-radius: 12px;
+            padding: 22px;
+        }
+        .feature h4 {
+            margin: 0 0 6px;
+            font-size: 16px;
+            color: var(--ink);
+        }
+        .feature p {
+            margin: 0;
+            font-size: 14px;
+            color: var(--mute);
+        }
+        .feature .icon {
+            width: 32px; height: 32px;
+            border-radius: 8px;
+            background: var(--azure-soft);
+            display: flex;
+            align-items: center; justify-content: center;
+            color: var(--azure-dark);
+            font-weight: 700;
+            margin-bottom: 12px;
+            font-size: 16px;
+        }
+
+        /* FAQ */
+        .faq details {
+            background: #fff;
+            border: 1px solid var(--line);
+            border-radius: 10px;
+            padding: 0 20px;
+            margin-bottom: 10px;
+        }
+        .faq summary {
+            cursor: pointer;
+            list-style: none;
+            padding: 16px 0;
+            font-weight: 600;
+            color: var(--ink);
+            font-size: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .faq summary::after {
+            content: '+';
+            color: var(--azure);
+            font-size: 22px;
+            line-height: 1;
+        }
+        .faq details[open] summary::after { content: '–'; }
+        .faq details p {
+            padding: 0 0 16px;
+            margin: 0;
+            color: var(--mute);
+            font-size: 14px;
+        }
+
+        /* Bottom CTA */
+        .end-cta {
+            background: var(--ink);
+            color: #fff;
+            border-radius: 20px;
+            padding: 48px 40px;
+            text-align: center;
+            margin-bottom: 56px;
+        }
+        .end-cta h2 { color: #fff; margin-bottom: 12px; }
+        .end-cta p { color: rgba(255,255,255,0.78); margin: 0 auto 24px; max-width: 50ch; }
+        .end-cta .cta-primary {
+            background: var(--azure);
+            color: #fff;
+        }
+        .end-cta .cta-primary:hover { background: var(--azure-dark); }
+
+        footer {
+            border-top: 1px solid var(--line);
+            padding: 28px 24px 40px;
+            color: var(--mute);
+            font-size: 13px;
+        }
+        .footer-inner {
+            max-width: 960px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px 24px;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+        .footer-links { display: flex; flex-wrap: wrap; gap: 8px 18px; }
+        .footer-links a { color: var(--mute); text-decoration: none; }
+        .footer-links a:hover { color: var(--azure); text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <main>
+        <div class="brand-strip">
+            <a href="index.html">← Azure Flowstate</a> · Affiliate Program
+        </div>
+
+        <section class="hero">
+            <div>
+                <div class="eyebrow">Affiliate program</div>
+                <h1>Earn <em>30%</em> on every Hirry customer you bring in.</h1>
+                <p>
+                    Recommend the Hirry service and Hirry AI to small and medium businesses across Europe.
+                    We pay 30% — on the one-off Hirry fee and on every Hirry AI instalment for the full 36-month term.
+                </p>
+                <a class="cta-primary" href="mailto:affiliate@azure.msg.community?subject=Affiliate%20Program%20Application">Apply to the program</a>
+                <a class="cta-secondary" href="#how">How it works</a>
+            </div>
+            <div class="hero-figure">
+                <div class="pct">30%</div>
+                <div class="pct-label">commission</div>
+                <div class="pct-note">
+                    On the Hirry one-off fee. <br>
+                    On every Hirry AI instalment, for 36 months.
+                </div>
+            </div>
+        </section>
+
+        <section class="block" id="how">
+            <h2>How it works</h2>
+            <p class="section-sub">From application to payout in three steps. No technical setup, no quota, no exclusivity required.</p>
+            <div class="steps-grid">
+                <div class="step">
+                    <span class="step-num">1</span>
+                    <h3>Apply</h3>
+                    <p>Send us a short email about who you are and how you'd promote Azure Flowstate. We review applications within five working days.</p>
+                </div>
+                <div class="step">
+                    <span class="step-num">2</span>
+                    <h3>Share your link</h3>
+                    <p>Once accepted, you receive a unique tracking link and a creator dashboard. Share it where your audience already listens.</p>
+                </div>
+                <div class="step">
+                    <span class="step-num">3</span>
+                    <h3>Get paid</h3>
+                    <p>30% commission is locked in at the moment of the customer's first payment. Payouts every month by bank transfer once you cross the minimum threshold.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="block">
+            <h2>What you earn, per sale</h2>
+            <p class="section-sub">30% of whatever the customer pays Azure Flowstate, in the currency of the customer's country of registration.</p>
+
+            <div class="earnings">
+                <table class="earn" aria-label="Affiliate commission per sale">
+                    <thead>
+                        <tr>
+                            <th>Currency</th>
+                            <th>Hirry service (one-off)</th>
+                            <th>Hirry AI — total over 36 months</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td class="currency">EUR</td><td>59.40</td><td>2,138.40</td></tr>
+                        <tr><td class="currency">HUF</td><td>20,940</td><td>753,840</td></tr>
+                        <tr><td class="currency">DKK</td><td>447</td><td>16,092</td></tr>
+                        <tr><td class="currency">PLN</td><td>239.10</td><td>8,607.60</td></tr>
+                        <tr><td class="currency">CZK</td><td>1,437</td><td>51,732</td></tr>
+                        <tr><td class="currency">RON</td><td>299.10</td><td>10,767.60</td></tr>
+                        <tr><td class="currency">CHF</td><td>59.40</td><td>2,138.40</td></tr>
+                        <tr><td class="currency">SEK</td><td>624</td><td>22,464</td></tr>
+                        <tr><td class="currency">USD</td><td>74.40</td><td>2,678.40</td></tr>
+                    </tbody>
+                </table>
+                <p class="earnings-note">
+                    The Hirry AI column is paid out as the customer pays — instalment by instalment over 36 months. If the customer pays in advance, you are paid in advance. If a payment is refunded under the guarantee in Section 3 of the <a href="terms_hirry.html">Hirry Terms</a>, the corresponding commission is clawed back.
+                </p>
+            </div>
+        </section>
+
+        <section class="block">
+            <h2>Why partner with Azure Flowstate</h2>
+            <div class="features">
+                <div class="feature">
+                    <div class="icon">€</div>
+                    <h4>Recurring upside</h4>
+                    <p>Hirry AI is a 36-month commitment. One referral pays you for three years.</p>
+                </div>
+                <div class="feature">
+                    <div class="icon">★</div>
+                    <h4>Real product</h4>
+                    <p>AI-refined job descriptions, autonomous sourcing, candidates delivered to WhatsApp. The product converts because it ships outcomes.</p>
+                </div>
+                <div class="feature">
+                    <div class="icon">⌖</div>
+                    <h4>Clear target</h4>
+                    <p>Small and medium European businesses with open positions. A defined audience you can address directly.</p>
+                </div>
+                <div class="feature">
+                    <div class="icon">⌃</div>
+                    <h4>No exclusivity</h4>
+                    <p>Run our program alongside others. We don't lock you in.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="block">
+            <h2>Program details</h2>
+            <div class="features">
+                <div class="feature">
+                    <h4>Commission</h4>
+                    <p>30% of every payment the referred customer makes to Azure Flowstate for the Hirry service or the Hirry AI service.</p>
+                </div>
+                <div class="feature">
+                    <h4>Cookie window</h4>
+                    <p>60 days. If the customer signs up within 60 days of clicking your link, the sale is attributed to you.</p>
+                </div>
+                <div class="feature">
+                    <h4>Payout cadence</h4>
+                    <p>Monthly, by bank transfer (SEPA / SWIFT) once you reach the minimum payout threshold (EUR 100 or local equivalent).</p>
+                </div>
+                <div class="feature">
+                    <h4>Refunds &amp; clawbacks</h4>
+                    <p>If a customer payment is refunded (including under the delivery guarantee in the Hirry Terms), the matching commission is reversed.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="block faq">
+            <h2>FAQ</h2>
+            <p class="section-sub">Short answers to what people usually ask.</p>
+
+            <details>
+                <summary>Who can apply?</summary>
+                <p>Anyone with an audience or channel that includes small and medium business owners in Europe. Content creators, recruiters, consultants, agencies, communities, newsletters — all welcome to apply.</p>
+            </details>
+            <details>
+                <summary>How long until I am accepted?</summary>
+                <p>We review applications within five working days and email a yes/no with a short reason.</p>
+            </details>
+            <details>
+                <summary>Is the 30% on the gross amount the customer pays, or net of taxes?</summary>
+                <p>30% of the amount actually collected by Azure Flowstate, net of taxes and payment processing fees that we pass through.</p>
+            </details>
+            <details>
+                <summary>Can I get paid for multiple Hirry AI seats from the same customer?</summary>
+                <p>Yes. Additional agentic AI seats are billed at the same rate and cadence as the original Hirry AI subscription, and you earn 30% on each of those payments too, for the duration of their 36-month term.</p>
+            </details>
+            <details>
+                <summary>What happens if the customer doesn't pay?</summary>
+                <p>You earn on payments collected, not on contracts signed. If a customer stops paying, your commission stream stops with theirs.</p>
+            </details>
+            <details>
+                <summary>Can I be both a customer and an affiliate?</summary>
+                <p>You can, but you cannot earn commission on your own subscriptions.</p>
+            </details>
+            <details>
+                <summary>What if I bring an existing Azure Flowstate customer?</summary>
+                <p>Referrals must be new customers. We deduplicate against our existing customer base before attributing a sale.</p>
+            </details>
+        </section>
+
+        <section class="end-cta">
+            <h2>Ready to start?</h2>
+            <p>Send us a short note about who you are and how you'd promote the program. We'll get back within five working days.</p>
+            <a class="cta-primary" href="mailto:affiliate@azure.msg.community?subject=Affiliate%20Program%20Application">Apply to the program</a>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-inner">
+            <div>
+                © 2026 Azure Flowstate Private Limited · UEN 202615248W · 68 Circular Road, #02-01, Singapore 049422
+            </div>
+            <nav class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="terms.html">Terms of Use</a>
+                <a href="privacy.html">Privacy Policy</a>
+                <a href="data-deletion.html">Data Deletion</a>
+                <a href="terms_hirry.html">Hirry Terms</a>
+            </nav>
+        </div>
+    </footer>
+</body>
+</html>
